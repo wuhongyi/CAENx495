@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC &mdash; CAEN 可编程逻辑模块 V1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="COINCIDENCE TRIGGER" href="COINCIDENCETRIGGER.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CAEN 可编程逻辑模块
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">硬件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Hardware.html">硬件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MezzanineCards.html">扩展子板</a></li>
+</ul>
+<p class="caption"><span class="caption-text">固件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Firmware.html">系统固件</a></li>
+</ul>
+<p class="caption"><span class="caption-text">驱动</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PLULib.html">PLULib</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SCI-COMPILER</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">SCI-COMPILER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="COINCIDENCETRIGGER.html">COINCIDENCE TRIGGER</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pattern-generator">PATTERN GENERATOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logic-analyzer">LOGIC ANALYZER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-mapped-register">MEMORY MAPPED REGISTER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counters">COUNTERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pattern-matching">PATTERN MATCHING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#state-machine-generator">STATE MACHINE GENERATOR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-review">FIRMWARE REVIEW</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CAEN 可编程逻辑模块</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/SCICOMPILER/MULTICHANNELSCALERANDPATTERMATCHINGTRIGGERLOGIC.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multichannel-scaler-and-patter-matching-trigger-logic">
+<h1>MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC<a class="headerlink" href="#multichannel-scaler-and-patter-matching-trigger-logic" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="http://www.sci-compiler.com/example-sci-8.html">http://www.sci-compiler.com/example-sci-8.html</a></p>
+<p>CAEN V2495 is a powerful programmable digital system designed to manage about 300 I/O signal in order to implement complex logic function, counters and triggers. In this example we will use the V2495 board to generate a pattern starting from the content of a file; the pattern generator is then used to stimulate a series of counters and a pattern matching state machine that can be programmed by USB, VME or Ethernet in order to recognize a two word pattern. All counters can be read out or resetted from USB, VME or Ethernet. When the pattern is recognized a Pattern Matching (PM) counter is increased. The PM counter can be read out by the comunication bus and heights of its bits (15:8) are shown on the 8 user leds. In order to readout and control counters or set the pattern in this example we will not use any custom software: SCICompiler has inside a tool called Resource Explorer. This tool enumerate all the pheripheral connected to the local bus of the V2495 device and list all available register and devices. In the firmware are inserted two logic analyzer: the first connected to all inputs (16 channels of A connector) and the second connected to the input and output of the patter matching state machine, in order to monitor the numeric value present on the bus.</p>
+<img alt="../_images/ex8_b_1.png" src="../_images/ex8_b_1.png" />
+<div class="section" id="pattern-generator">
+<h2>PATTERN GENERATOR<a class="headerlink" href="#pattern-generator" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_3.png" src="../_images/ex8_b_3.png" />
+<p>SCICompiler has different embedded signal generator. It is for example possible to generate exponential signals to test energy processing blocks, generate digital waveform or import file in binary, heaxadecimal or decimal, format in order to generate a periodic sequence. The Patter Generator can be configure in order to reproduce the sequence with a configurable speed. The Pattern reproduction can be started automatically or upon the transition of a start signal.</p>
+</div>
+<div class="section" id="logic-analyzer">
+<h2>LOGIC ANALYZER<a class="headerlink" href="#logic-analyzer" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_2.png" src="../_images/ex8_b_2.png" />
+<p>SCICompiler includes a powerful Logic Analyzer that can be used to remote monitor the input signal and the internal interconnection of the design. The Logic Analyzer can be used both douring the design phase to debug the processing core both during normal operation to control the status of I/O even from a remote desktop. If you are not sure to have connect all cables correctly now you can avoid to enter in the experimental area and you can just add a debug probe to a pin and se if it toggle. The Logic Analyzer can be triggered, internally (upon the transition of one of the input), externally (upon the trasition of a dedicated trigger input), or by software. Signal in the Logic Analyzer can be grouped into bus. More then one Logic Analyzer can be added to the same design. The resource exporer software is able to enumarate the variuos logic analyzers and implements a GUI to interact with them and show the waveforms. A DLL library (open source) is also available to integrate the Logic Analyzer GUI in a user application. Logic Analyzer data could also be dumped by library function using any programming language that support interaction with dynamic libraries (in Windows, Linux and MacOS) like C/CPP, Matlab, ROOT, Labview</p>
+</div>
+<div class="section" id="memory-mapped-register">
+<h2>MEMORY MAPPED REGISTER<a class="headerlink" href="#memory-mapped-register" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_4.png" src="../_images/ex8_b_4.png" />
+<p>User Interaction by USB/VME/Ethernet bus is one of the most important feature of SCICompiler In the design of a processing system the implementation of a secure and fast communication protocol is one of the most time spending task. SCICompiler implements in its core all the necessary circuit to map Registers and Memory Buffer in a 16 bit for V2495 and 32 bit for DT5550 memory space direct addressable from a remote PC. All drivers and libraries for Windows and Linux are automatically generate by SCICompiler User tasks are limited to define the registers and connect them to internal signal of the design Register can be seen like an endpoint that can be written or read from the control PC. FIFO (List moduele or Image module) are more similar to a pipe. What is written inside disappear and is transported on a memory buffer on the PC. Spectrum memory can be seen as an external memory area that the computer can read/write specifying the address</p>
+</div>
+<div class="section" id="counters">
+<h2>COUNTERS<a class="headerlink" href="#counters" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_5.png" src="../_images/ex8_b_5.png" />
+<p>Counter modules are direct connected to the digital input of the board. The increase by one every time they are triggered by a transition (HL, LH or BOTH) of the input signals. The 32 bit counter outputs are direct connected to the Memory Mapped registers those are periodically read out by the controlling PC</p>
+</div>
+<div class="section" id="pattern-matching">
+<h2>PATTERN MATCHING<a class="headerlink" href="#pattern-matching" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_6.png" src="../_images/ex8_b_6.png" />
+<p>Heigh of the 16 input signal is merged in a bus in order to be processed by a pattern matching state machine. A validation signal (one of the 16 inputs) is used to capture by a rising edge flip flop the 8 bit sub-bus. The output of the FF is then passed as input of the pattern matching state machine. The state machine is also connected to two registers (PAT0, PAT1) programmed by the PC with the two stages pattern. Each time the pattern is recognized a pulse increment a counter. The counter can be read out by a PC or by the V2495 user leds.</p>
+</div>
+<div class="section" id="state-machine-generator">
+<h2>STATE MACHINE GENERATOR<a class="headerlink" href="#state-machine-generator" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/ex8_b_7.png" src="../_images/ex8_b_7.png" />
+<p>SCICompiler include a complex state machine generator. The state machine allows the execution of sequential operations in a fully parallel context like inside FPGAs and ASIC. The state machine editor windows is divided in two part. On the left the user design the state diagram with the connections between different states. On the right it is possible to edit:</p>
+<ul class="simple">
+<li><p>The actions perform by the different states</p></li>
+<li><p>The conditions to exit from a state</p></li>
+</ul>
+<p>The state actions can be very simple (like set output state) or much more complex like deserialize incoming data. Even the link exit condition can be extremely siple, like wait the transition of an input or more complex like counts the transitions of one or more inputs respecting a maxiumum programmable timeout.</p>
+</div>
+<div class="section" id="firmware-review">
+<h2>FIRMWARE REVIEW<a class="headerlink" href="#firmware-review" title="永久链接至标题">¶</a></h2>
+<p>The block diagram below shows the full firmware implemented inside the V2495.</p>
+<img alt="../_images/ex8_b_8.png" src="../_images/ex8_b_8.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="COINCIDENCETRIGGER.html" class="btn btn-neutral float-left" title="COINCIDENCE TRIGGER" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -3,18 +3,57 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Template's documentation!
-====================================
+CAEN x495 使用说明
+#################################
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
+如果您需要固件的支持，请联系吴鸿毅（wuhongyi@qq.com / wuhongyi@pku.edu.cn）
+	     
+
+#################################
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 简介
+
+   README.rst
+
+#################################
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 硬件
+
+   Hardware.rst
+   MezzanineCards.rst
+   
+#################################
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 固件
+   
+   Firmware.rst
+
+
+
+#################################
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 驱动
 
+   PLULib.rst
 
+#################################
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 3
+   :caption: SCI-COMPILER
+   
+   SCICOMPILER/README.rst
+   SCICOMPILER/COINCIDENCETRIGGER.rst
+   SCICOMPILER/MULTICHANNELSCALERANDPATTERMATCHINGTRIGGERLOGIC.rst

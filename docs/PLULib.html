@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PLULib &mdash; CAEN 可编程逻辑模块 V1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="SCI-COMPILER" href="SCICOMPILER/README.html" />
+    <link rel="prev" title="系统固件" href="Firmware.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CAEN 可编程逻辑模块
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">硬件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">硬件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MezzanineCards.html">扩展子板</a></li>
+</ul>
+<p class="caption"><span class="caption-text">固件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Firmware.html">系统固件</a></li>
+</ul>
+<p class="caption"><span class="caption-text">驱动</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PLULib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plulib-test">PLULib Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-codes">Error Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">库函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opendevice">OpenDevice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closedevice">CloseDevice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writereg">WriteReg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readreg">ReadReg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writedata32">WriteData32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writefifo32">WriteFIFO32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readdata32">ReadData32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readfifo32">ReadFIFO32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usbenumerate">USBEnumerate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usbenumerateserialnumber">USBEnumerateSerialNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initgateanddelaygenerators">InitGateAndDelayGenerators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setgateanddelaygenerator">SetGateAndDelayGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setgateanddelaygenerators">SetGateAndDelayGenerators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getgateanddelaygenerator">GetGateAndDelayGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enableflashaccess">EnableFlashAccess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disableflashaccess">DisableFlashAccess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleteflashsector">DeleteFlashSector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writeflashdata">WriteFlashData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readflashdata">ReadFlashData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getinfo">GetInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getserialnumber">GetSerialNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connectionstatus">ConnectionStatus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">数据结构和类型描述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#t-connectionmodes">t_ConnectionModes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#t-fpga-v2495">t_FPGA_V2495</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tboardinfo">tBOARDInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tusbdevice">_tUSBDevice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">SCI-COMPILER</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/README.html">SCI-COMPILER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/COINCIDENCETRIGGER.html">COINCIDENCE TRIGGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/MULTICHANNELSCALERANDPATTERMATCHINGTRIGGERLOGIC.html">MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CAEN 可编程逻辑模块</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>PLULib</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/PLULib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="plulib">
+<h1>PLULib<a class="headerlink" href="#plulib" title="永久链接至标题">¶</a></h1>
+<div class="section" id="plulib-test">
+<h2>PLULib Test<a class="headerlink" href="#plulib-test" title="永久链接至标题">¶</a></h2>
+<p>The connection parameters to correctly run the demo are:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>connection type -&gt; the identifier of the active communication link:</dt><dd><ul>
+<li><p>0 = USB direct link</p></li>
+<li><p>1 = Ethernet link</p></li>
+<li><p>2 = USB-to-VME through the V1718 CAEN Bridge</p></li>
+<li><p>3 = CONET-to-VME through the V2718 CAEN Brdige</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>device_serial_number -&gt; the serial number of the target board. This parameter is meaningful only in case of USB direct link; do not add it to the command string otherwise.</p></li>
+<li><p>ip -&gt; the IP address of the target board. This parameter is meaningful only in case of Ethernet connection to the DT5495 board; do not add it to the command string otherwise.</p></li>
+<li><p>b -&gt; the VME Base Address of the target board. This parameter is meaningful only in case of connection to the V2495 board through a CAEN Bridge (V2718/V1718); do not add it to the command string otherwise.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 很奇怪的问题，我们插件的控制需要用以下的命令</span>
+./CAENPLUTest -c <span class="m">0</span> -sn <span class="m">0025</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>PLULib 支持以下方式的通讯:</p>
+<ul class="simple">
+<li><p>PC → USB-to-miniUSB → V2495/DT5495</p></li>
+<li><p>PC → ETH → DT5495</p></li>
+<li><p>PC → PCI (A2818) → CONET → V2718 → VME → V2495</p></li>
+<li><p>PC → PCIe (A3818) → CONET → V2718 → VME → V2495</p></li>
+<li><p>PC → USB → V1718 → VME → V2495</p></li>
+</ul>
+</div>
+<div class="section" id="error-codes">
+<h2>Error Codes<a class="headerlink" href="#error-codes" title="永久链接至标题">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">CAEN_PLU_ERROR_CODE</span> <span class="p">{</span>
+             <span class="n">CAEN_PLU_OK</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_GENERIC</span> <span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_INTERFACE</span> <span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_FPGA</span> <span class="o">=-</span><span class="mi">3</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_TRANSFER_MAX_LENGTH</span> <span class="o">=-</span><span class="mi">4</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_NOTCONNECTED</span> <span class="o">=-</span><span class="mi">5</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_NO_DATA_AVAILABLE</span> <span class="o">=-</span><span class="mi">6</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_TOO_MANY_DEVICES_CONNECTED</span> <span class="o">=-</span><span class="mi">7</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_INVALID_HANDLE</span> <span class="o">=-</span><span class="mi">8</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_INVALID_HARDWARE</span> <span class="o">=-</span><span class="mi">9</span><span class="p">,</span>
+             <span class="n">CAEN_PLU_INVALID_PARAMETERS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_returncodestable.png" src="_images/PLULib_returncodestable.png" />
+</div>
+<div class="section" id="id1">
+<h2>库函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="opendevice">
+<h3>OpenDevice<a class="headerlink" href="#opendevice" title="永久链接至标题">¶</a></h3>
+<p>The connection with a device in your network can be established using this function. It returns a handle that can be used later to interact with the system.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="n">t_ConnectionModes</span> <span class="n">connection_mode</span><span class="p">,</span>
+                                     <span class="kt">char</span> <span class="o">*</span><span class="n">IPAddress_or_SN_or_VMEBaseAddress</span><span class="p">,</span>
+                                     <span class="kt">int</span> <span class="n">TCPPort_or_VMElink</span><span class="p">,</span>
+                                     <span class="kt">int</span> <span class="n">UDPPort_or_VMEConetNode</span><span class="p">,</span>
+                                     <span class="kt">int</span> <span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_OpenDevice_Argument.png" src="_images/PLULib_OpenDevice_Argument.png" />
+<p>CAEN_PLU_OK (0) in case of success. Negative numbers are error codes (see Error Codes).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Connecting to a PLU module (V2495 or DT5495) via direct USB link:</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="n">CAEN_PLU_CONNECT_DIRECT_USB</span><span class="p">,</span> <span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="c1">// A connection via a Ethernet is opened with:</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="n">CAEN_PLU_CONNECT_DIRECT_ETH</span><span class="p">,</span> <span class="s">&quot;192.168.7.11&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="c1">// V1718 access can be opened with:</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="n">CAEN_PLU_CONNECT_VME_V1718</span><span class="p">,</span> <span class="n">vme_base_address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="c1">// V2718 bridge connection can be opened with:</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="n">CAEN_PLU_CONNECT_VME_V2718</span><span class="p">,</span> <span class="n">vme_base_address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="c1">// In both the latter cases, a VME Base Address of the PLU module must be specified.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="closedevice">
+<h3>CloseDevice<a class="headerlink" href="#closedevice" title="永久链接至标题">¶</a></h3>
+<p>This function closes the connection with the programmable logic unit. The CloseDevice function must be called before to exit the application.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_OpenDevice</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Return Values : 0: Success. Negative numbers are error codes (see Error Codes).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Close the device with:</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">CAEN_PLU_CloseDevice</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writereg">
+<h3>WriteReg<a class="headerlink" href="#writereg" title="永久链接至标题">¶</a></h3>
+<p>Generic write access to a register of the device.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_WriteReg</span><span class="p">(</span>
+     <span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+     <span class="kt">uint32_t</span> <span class="n">address</span><span class="p">,</span>
+     <span class="kt">uint32_t</span> <span class="n">value</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_WriteReg_Argument.png" src="_images/PLULib_WriteReg_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="readreg">
+<h3>ReadReg<a class="headerlink" href="#readreg" title="永久链接至标题">¶</a></h3>
+<p>Generic read access to a register of the device.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_ReadReg</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                 <span class="kt">int32_t</span> <span class="n">address</span><span class="p">,</span>
+                 <span class="kt">int32_t</span> <span class="o">*</span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_ReadReg_Argument.png" src="_images/PLULib_ReadReg_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="writedata32">
+<h3>WriteData32<a class="headerlink" href="#writedata32" title="永久链接至标题">¶</a></h3>
+<p>This function writes 32-bit data into memory.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_WriteData32</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">start_address</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">size</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_WriteData32_Argument.png" src="_images/PLULib_WriteData32_Argument.png" />
+<p>Return Values: 0: Success; Negative numbers are error codes.</p>
+</div>
+<div class="section" id="writefifo32">
+<h3>WriteFIFO32<a class="headerlink" href="#writefifo32" title="永久链接至标题">¶</a></h3>
+<p>This function writes 32-bit data at the same address (FIFO mode).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_WriteFIFO32</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">start_address</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">size</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_WriteFIFO32_Argument.png" src="_images/PLULib_WriteFIFO32_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="readdata32">
+<h3>ReadData32<a class="headerlink" href="#readdata32" title="永久链接至标题">¶</a></h3>
+<p>This function reads 32-bit data from memory.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_ReadData32</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">start_address</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">size</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">nw</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_ReadData32_Argument.png" src="_images/PLULib_ReadData32_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="readfifo32">
+<h3>ReadFIFO32<a class="headerlink" href="#readfifo32" title="永久链接至标题">¶</a></h3>
+<p>This function reads 32-bit data from the same adddress (FIFO mode).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_ReadFIFO32</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">address</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">size</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">nw</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_ReadFIFO32_Argument.png" src="_images/PLULib_ReadFIFO32_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="usbenumerate">
+<h3>USBEnumerate<a class="headerlink" href="#usbenumerate" title="永久链接至标题">¶</a></h3>
+<p>This function enumerates the boards connected via USB direct link.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_USBEnumerate</span><span class="p">(</span><span class="n">tUSBDevice</span> <span class="o">*</span><span class="n">pvArg1</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">numDevs</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_USBEnumerate_Argument.png" src="_images/PLULib_USBEnumerate_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="usbenumerateserialnumber">
+<h3>USBEnumerateSerialNumber<a class="headerlink" href="#usbenumerateserialnumber" title="永久链接至标题">¶</a></h3>
+<p>This function enumerates the boards connected via USB direct link and returns a Serial Number as a string.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_USBEnumerateSerialNumber</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">numDevs</span><span class="p">,</span>
+                                  <span class="kt">char</span> <span class="o">*</span><span class="n">DeviceSNs</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">buffersize</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_USBEnumerateSerialNumber_Argument.png" src="_images/PLULib_USBEnumerateSerialNumber_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="initgateanddelaygenerators">
+<h3>InitGateAndDelayGenerators<a class="headerlink" href="#initgateanddelaygenerators" title="永久链接至标题">¶</a></h3>
+<p>This function performs the Gate and Delay initialization. <strong>It MUST be called prior to any Gate and Delay function call.</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_InitGateAndDelayGenerators</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="setgateanddelaygenerator">
+<h3>SetGateAndDelayGenerator<a class="headerlink" href="#setgateanddelaygenerator" title="永久链接至标题">¶</a></h3>
+<p>This function enables and sets <strong>a single</strong> gate and delay generator channel.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_SetGateAndDelayGenerator</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">channel</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">enable</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">gate</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">delay</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">scale_factor</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Note: Gate+Delay parameters cannot exceed 65535.</strong></p>
+<img alt="_images/PLULib_SetGateAndDelayGenerator_Argument.png" src="_images/PLULib_SetGateAndDelayGenerator_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="setgateanddelaygenerators">
+<h3>SetGateAndDelayGenerators<a class="headerlink" href="#setgateanddelaygenerators" title="永久链接至标题">¶</a></h3>
+<p>This function enables and set <strong>ALL</strong> gate and delay generators channels with a common value.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_SetGateAndDelayGenerators</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                                   <span class="kt">uint32_t</span> <span class="n">gate</span><span class="p">,</span>
+                                   <span class="kt">uint32_t</span> <span class="n">delay</span><span class="p">,</span>
+                                   <span class="kt">uint32_t</span> <span class="n">scale_factor</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Note: Gate+Delay parameters cannot exceed 65535.</strong></p>
+<img alt="_images/PLULib_SetGateAndDelayGenerators_Argument.png" src="_images/PLULib_SetGateAndDelayGenerators_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="getgateanddelaygenerator">
+<h3>GetGateAndDelayGenerator<a class="headerlink" href="#getgateanddelaygenerator" title="永久链接至标题">¶</a></h3>
+<p>This function gets the Gate and Delay channel parameters.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_GetGateAndDelayGenerator</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="n">channel</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">gate</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">delay</span><span class="p">,</span>
+                                  <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">scale_factor</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_GetGateAndDelayGenerator_Argument.png" src="_images/PLULib_GetGateAndDelayGenerator_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="enableflashaccess">
+<h3>EnableFlashAccess<a class="headerlink" href="#enableflashaccess" title="永久链接至标题">¶</a></h3>
+<p>By this function, it is possible to enable the Flash access. <strong>It MUST be called prior to any Flash access function call.</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_EnableFlashAccess</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                           <span class="n">t_FPGA_V2495</span> <span class="n">FPGA</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_EnableFlashAccess_Argument.png" src="_images/PLULib_EnableFlashAccess_Argument.png" />
+<p>Return Values:   0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="disableflashaccess">
+<h3>DisableFlashAccess<a class="headerlink" href="#disableflashaccess" title="永久链接至标题">¶</a></h3>
+<p>By this function, it is possible to disable the Flash access. <strong>It MUST be called prior to any flash access function call.</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_DisableFlashAccess</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                            <span class="n">t_FPGA_V2495</span> <span class="n">FPGA</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_DisableFlashAccess_Argument.png" src="_images/PLULib_DisableFlashAccess_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="deleteflashsector">
+<h3>DeleteFlashSector<a class="headerlink" href="#deleteflashsector" title="永久链接至标题">¶</a></h3>
+<p>This function deletes a single Flash sector.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_DeleteFlashSector</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                           <span class="n">t_FPGA_V2495</span> <span class="n">FPGA</span><span class="p">,</span>
+                           <span class="kt">uint32_t</span> <span class="n">sector</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Note: Please, BE AWARE that some sectors are reserved for factory and user firmware. User storage area is in sectors 106-510 for MAIN Flash and sectors 458-510 for USER Flash. DELAY Flash should not be used for user data.</strong></p>
+<img alt="_images/PLULib_DeleteFlashSector_Argument.png" src="_images/PLULib_DeleteFlashSector_Argument.png" />
+<p>Return Values:   0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="writeflashdata">
+<h3>WriteFlashData<a class="headerlink" href="#writeflashdata" title="永久链接至标题">¶</a></h3>
+<p>This function allows to write data into the Flash.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_WriteFlashData</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                        <span class="n">t_FPGA_V2495</span> <span class="n">FPGA</span><span class="p">,</span>
+                        <span class="kt">uint32_t</span> <span class="n">address</span><span class="p">,</span>
+                        <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span>
+                        <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_WriteFlashData_Argument.png" src="_images/PLULib_WriteFlashData_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="readflashdata">
+<h3>ReadFlashData<a class="headerlink" href="#readflashdata" title="永久链接至标题">¶</a></h3>
+<p>This function allows to read data from the Flash.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_ReadFlashData</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                       <span class="n">t_FPGA_V2495</span> <span class="n">FPGA</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="n">address</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_ReadFlashData_Argument.png" src="_images/PLULib_ReadFlashData_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="getinfo">
+<h3>GetInfo<a class="headerlink" href="#getinfo" title="永久链接至标题">¶</a></h3>
+<p>This function retrieves the module information.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="n">CAEN_PLU_GetInfo</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                 <span class="n">tBOARDInfo</span> <span class="o">*</span><span class="n">HWOPTIONS</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_GetInfo_Argument.png" src="_images/PLULib_GetInfo_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="getserialnumber">
+<h3>GetSerialNumber<a class="headerlink" href="#getserialnumber" title="永久链接至标题">¶</a></h3>
+<p>This function retrieves the module serial number stored into the Configuration ROM</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_GetSerialNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                         <span class="kt">char</span> <span class="o">*</span><span class="n">sn</span><span class="p">,</span>
+                         <span class="kt">uint32_t</span> <span class="n">buffersize</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_GetSerialNumber_Argument.png" src="_images/PLULib_GetSerialNumber_Argument.png" />
+<p>Return Values:  0: Success. Negative numbers are error codes.</p>
+</div>
+<div class="section" id="connectionstatus">
+<h3>ConnectionStatus<a class="headerlink" href="#connectionstatus" title="永久链接至标题">¶</a></h3>
+<p>This function gets the current connection status from the unit.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CAEN_PLU_API</span> <span class="n">CAEN_PLU_ERROR_CODE</span>
+<span class="nf">CAEN_PLU_ConnectionStatus</span><span class="p">(</span><span class="kt">int</span> <span class="n">handle</span><span class="p">,</span>
+                          <span class="kt">int</span> <span class="o">*</span><span class="n">status</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_ConnectionStatus_Argument.png" src="_images/PLULib_ConnectionStatus_Argument.png" />
+<p>Return Values: 0: Success. Negative numbers are error codes.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>数据结构和类型描述<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="t-connectionmodes">
+<h3>t_ConnectionModes<a class="headerlink" href="#t-connectionmodes" title="永久链接至标题">¶</a></h3>
+<p>Enumerated type for the kind of connection link.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span>
+<span class="p">{</span>
+     <span class="n">CAEN_PLU_CONNECT_DIRECT_USB</span><span class="p">,</span>
+     <span class="n">CAEN_PLU_CONNECT_DIRECT_ETH</span><span class="p">,</span>
+     <span class="n">CAEN_PLU_CONNECT_VME_V1718</span><span class="p">,</span>
+     <span class="n">CAEN_PLU_CONNECT_VME_V2718</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">t_ConnectionModes</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_t_ConnectionModes_Fields.png" src="_images/PLULib_t_ConnectionModes_Fields.png" />
+</div>
+<div class="section" id="t-fpga-v2495">
+<h3>t_FPGA_V2495<a class="headerlink" href="#t-fpga-v2495" title="永久链接至标题">¶</a></h3>
+<p>Enumerated type for the kind of V2495/DT5495 target FPGA.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span>
+<span class="p">{</span>
+     <span class="n">FPGA_MAIN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">FPGA_USER</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+     <span class="n">FPGA_DELAY</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="p">}</span> <span class="n">t_FPGA_V2495</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_t_FPGA_V2495_Fields.png" src="_images/PLULib_t_FPGA_V2495_Fields.png" />
+</div>
+<div class="section" id="tboardinfo">
+<h3>tBOARDInfo<a class="headerlink" href="#tboardinfo" title="永久链接至标题">¶</a></h3>
+<p>This structure defines the board generic information from the Configuration ROM.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">_tBOARDInfo</span>
+<span class="p">{</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_length2</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_length1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_length0</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_constant2</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_constant1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">checksum_constant0</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">c_code</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">r_code</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">oui2</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">oui1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">oui0</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">version</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">board2</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">board1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">board0</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">revis3</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">revis2</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">revis1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">revis0</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">reserved</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+     <span class="kt">uint32_t</span> <span class="n">sernum1</span><span class="p">;</span>
+     <span class="kt">uint32_t</span> <span class="n">sernum0</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">tBOARDInfo</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_tBOARDInfo_Fields.png" src="_images/PLULib_tBOARDInfo_Fields.png" />
+</div>
+<div class="section" id="tusbdevice">
+<h3>_tUSBDevice<a class="headerlink" href="#tusbdevice" title="永久链接至标题">¶</a></h3>
+<p>This structure defines the USB device descriptor.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">_tUSBDevice</span>
+<span class="p">{</span>
+     <span class="kt">uint32_t</span> <span class="n">id</span><span class="p">;</span>
+     <span class="kt">char</span> <span class="n">SN</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+     <span class="kt">char</span> <span class="n">DESC</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">tUSBDevice</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/PLULib_tUSBDevice_Fields.png" src="_images/PLULib_tUSBDevice_Fields.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SCICOMPILER/README.html" class="btn btn-neutral float-right" title="SCI-COMPILER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Firmware.html" class="btn btn-neutral float-left" title="系统固件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

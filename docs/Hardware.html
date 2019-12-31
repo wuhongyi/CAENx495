@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>硬件 &mdash; CAEN 可编程逻辑模块 V1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="扩展子板" href="MezzanineCards.html" />
+    <link rel="prev" title="简介" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CAEN 可编程逻辑模块
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">硬件</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">硬件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usb-interface">USB Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ethernet-interface">Ethernet Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-fpga">Main FPGA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-fpga">User FPGA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gate-and-delay-generator">Gate and Delay Generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clock-distribution">Clock Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#front-rear-panel">Front/Rear Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MezzanineCards.html">扩展子板</a></li>
+</ul>
+<p class="caption"><span class="caption-text">固件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Firmware.html">系统固件</a></li>
+</ul>
+<p class="caption"><span class="caption-text">驱动</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PLULib.html">PLULib</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SCI-COMPILER</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/README.html">SCI-COMPILER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/COINCIDENCETRIGGER.html">COINCIDENCE TRIGGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/MULTICHANNELSCALERANDPATTERMATCHINGTRIGGERLOGIC.html">MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CAEN 可编程逻辑模块</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>硬件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Hardware.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>硬件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<img alt="_images/MainComponentsAndInterconnections.png" src="_images/MainComponentsAndInterconnections.png" />
+<div class="section" id="usb-interface">
+<h2>USB Interface<a class="headerlink" href="#usb-interface" title="永久链接至标题">¶</a></h2>
+<p>The DT5495 is equipped with a USB2.0 interface. The USB physical layer is managed by a high-speed transceiver controlled by the Main FPGA.</p>
+</div>
+<div class="section" id="ethernet-interface">
+<h2>Ethernet Interface<a class="headerlink" href="#ethernet-interface" title="永久链接至标题">¶</a></h2>
+<p>In addition to the USB, the DT5495 provides a 10/100T Ethernet interface controlled by the Main FPGA.</p>
+</div>
+<div class="section" id="main-fpga">
+<h2>Main FPGA<a class="headerlink" href="#main-fpga" title="永久链接至标题">¶</a></h2>
+<p>The MFPGA (Altera Cyclone V E) manages the Ethernet and USB interfaces and the connection with the UFPGA through a proprietary 16-bit 50 MHz local bus. The MFPGA has a dedicated external flash memory for configuration purposes.</p>
+<p>It also pilots the flash memories dedicated to loading the firmware on the UFPGA and on the GDG.</p>
+</div>
+<div class="section" id="user-fpga">
+<h2>User FPGA<a class="headerlink" href="#user-fpga" title="永久链接至标题">¶</a></h2>
+<p>The User FPGA (Altera Cyclone V GX) manages the I/O peripherals (A/D, B/E, G, C/F ports) and communicates with the GDG. A dedicated external flash memory can store a set of firmware images to be loaded on the User FPGA. A dedicated JTAG connector allows to program the UFPGA “on-the-fly” for fast firmware prototyping and debugging.</p>
+</div>
+<div class="section" id="gate-and-delay-generator">
+<h2>Gate and Delay Generator<a class="headerlink" href="#gate-and-delay-generator" title="永久链接至标题">¶</a></h2>
+<p>The DT5495 hosts a Gate and Delay Generator able to provide up to 32 gated and delayed signals(“delayed signals”) triggered by 32 inputs (“start signals”). The gate width and delay value are user programmable. The GDG is an external component implemented in a Xilinx Spartan-6 FPGA. It is connected through a serial bus (SPI) to the User FPGA for gate and delay register programming (refer to Sect. Gate and Delay Controller for detailed information).</p>
+<p>The GDG configuration is stored in a dedicated flash memory. The GDG firmware cannot be modified by the user.</p>
+<img alt="_images/TheUFPGAandGDGinterface.png" src="_images/TheUFPGAandGDGinterface.png" />
+</div>
+<div class="section" id="clock-distribution">
+<h2>Clock Distribution<a class="headerlink" href="#clock-distribution" title="永久链接至标题">¶</a></h2>
+<p>Each FPGA receives the same 50-MHz system clock generated by a common on-board oscillator.</p>
+</div>
+<div class="section" id="front-rear-panel">
+<h2>Front/Rear Panel<a class="headerlink" href="#front-rear-panel" title="永久链接至标题">¶</a></h2>
+<img alt="_images/FrontPanel.png" src="_images/FrontPanel.png" />
+<img alt="_images/RearPanel.png" src="_images/RearPanel.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="MezzanineCards.html" class="btn btn-neutral float-right" title="扩展子板" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

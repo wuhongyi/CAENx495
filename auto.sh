@@ -7,11 +7,13 @@ rm -rf docs/*
 cd README
 make clean
 
+cp source/README.rst ../README.rst
+
 make html
 cp -r build/html/* ../docs/
 
-#make latexpdf
-#mv build/latex/mztio.pdf README.pdf
+make latexpdf
+mv build/latex/*.pdf ../README.pdf
 
 make clean
 

@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>系统固件 &mdash; CAEN 可编程逻辑模块 V1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="PLULib" href="PLULib.html" />
+    <link rel="prev" title="扩展子板" href="MezzanineCards.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CAEN 可编程逻辑模块
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">硬件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Hardware.html">硬件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MezzanineCards.html">扩展子板</a></li>
+</ul>
+<p class="caption"><span class="caption-text">固件</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">系统固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#caenupgrader">CAENUpgrader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-main-fpga-firmware">Get Main FPGA Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-main-fpga-firmware">Upgrade Main FPGA Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-user-fpga-firmware">Upgrade User FPGA Firmware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#address-map">Address Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-fpga-data-access">User FPGA Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-fpga-register-access">User FPGA Register Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-rom">Configuration ROM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-and-status-registers">Configuration and Status Registers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash-configuration">Flash Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-scratch-sram">Internal Scratch SRAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">驱动</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PLULib.html">PLULib</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SCI-COMPILER</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/README.html">SCI-COMPILER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/COINCIDENCETRIGGER.html">COINCIDENCE TRIGGER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCICOMPILER/MULTICHANNELSCALERANDPATTERMATCHINGTRIGGERLOGIC.html">MULTICHANNEL SCALER AND PATTER MATCHING TRIGGER LOGIC</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CAEN 可编程逻辑模块</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>系统固件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Firmware.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>系统固件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="caenupgrader">
+<h2>CAENUpgrader<a class="headerlink" href="#caenupgrader" title="永久链接至标题">¶</a></h2>
+<p>CAENUpgrader allows to perform the following operations on the DT5495 board:</p>
+<ul class="simple">
+<li><p>Upgrade the MFPGA firmware</p></li>
+<li><p>Load the User firmware on the UFPGA</p></li>
+<li><p>Verify the Main and User FPGA firmware</p></li>
+<li><p>Read the release number of the MFPGA firmware</p></li>
+<li><p>Store and get the Product Unlock Code in case of paid firmware</p></li>
+<li><p>Get the Board Info file (useful in case of support requests)</p></li>
+</ul>
+<div class="section" id="get-main-fpga-firmware">
+<h3>Get Main FPGA Firmware<a class="headerlink" href="#get-main-fpga-firmware" title="永久链接至标题">¶</a></h3>
+<p>The following instructions allow to read the release number of the MFPGA firmware:</p>
+<ul class="simple">
+<li><p>Select the “Get Firmware Release” option in the Board tab.</p></li>
+<li><p>Select the “V2495” item in the Board Model combo box.</p></li>
+<li><p>Set the connection parameters according to your communication link and hardware setup.</p></li>
+<li><p>Press the Get FW Rel button. The software displays the release number in a message window.</p></li>
+</ul>
+<img alt="_images/CAENUpgraderGetFirmwareReleaseMenu.png" src="_images/CAENUpgraderGetFirmwareReleaseMenu.png" />
+</div>
+<div class="section" id="upgrade-main-fpga-firmware">
+<h3>Upgrade Main FPGA Firmware<a class="headerlink" href="#upgrade-main-fpga-firmware" title="永久链接至标题">¶</a></h3>
+<p>The MFPGA firmware can be downloaded from CAEN website at the DT5495 web page:
+The firmware file is available in Altera RPD format.</p>
+<p>The following instructions allow to upgrade the MFPGA firmware:</p>
+<ul class="simple">
+<li><p>Select the “Upgrade Firmware” option in the Board tab.</p></li>
+<li><p>Select the “DT5495” item in the Board Model combo box.</p></li>
+<li><p>Set the connection parameters according to your communication link and hardware setup.</p></li>
+<li><p>Select the MFPGA by checking the relevant checkbox.</p></li>
+<li><p>Select the Main application firmware RPD file.</p></li>
+<li><p>Press the Upgrade button. The outcome of the upgrade process is shown in a message window.</p></li>
+<li><p>Power cycle the board to reconfigure the MFPGA with the firmware just updated on the flash. Please refer to Sect. Power-on Configuration Sequence to check the outcome of the process.</p></li>
+</ul>
+<img alt="_images/CAENUpgraderMFPGAUpgradeFirmwaremenu.png" src="_images/CAENUpgraderMFPGAUpgradeFirmwaremenu.png" />
+</div>
+<div class="section" id="upgrade-user-fpga-firmware">
+<h3>Upgrade User FPGA Firmware<a class="headerlink" href="#upgrade-user-fpga-firmware" title="永久链接至标题">¶</a></h3>
+<p>The UFPGA demo firmware projects are available on CAEN website at the DT5495 web page.</p>
+<p>User demo firmware or custom user firmware can be recompiled and the generated RPD file can be uploaded into the
+FLASH memory of the User FPGA.</p>
+<p><strong>The custom or the Demo RPD firmware file can be uploaded only on the application 1 page of the USER FPGA FLASH of the DT5495!</strong></p>
+<p>The following instructions allow to upgrade the UFPGA firmware:
+- Select the “Upgrade Firmware” option in the Board tab.
+- Select the “V2495” item in the Board Model combo box.
+- Set the connection parameters according to your communication link and hardware setup.
+- Select the UFPGA by checking the relevant checkbox.
+- Select Application 1 as the only supported target application image.
+- Select your User firmware or a CAEN Demo firmware RPD file.
+- Press the Upgrade button. The outcome of the upgrade process is shown in a message window.</p>
+<p>At the end of the upgrade process, the CAEN Upgrader will force a reconfiguration of the UFPGA from the selected userapplication image.</p>
+<img alt="_images/CAENUpgraderUFPGAUpgradeFirmwaremenu.png" src="_images/CAENUpgraderUFPGAUpgradeFirmwaremenu.png" />
+</div>
+</div>
+<div class="section" id="address-map">
+<h2>Address Map<a class="headerlink" href="#address-map" title="永久链接至标题">¶</a></h2>
+<p>The DT5495 board can be accessed via both Ethernet and USB interface. All registers are accessible from both communication interfaces.</p>
+<p>The following table illustrates the DT5495 address map:</p>
+<img alt="_images/DT5495RegsterAddressMap.png" src="_images/DT5495RegsterAddressMap.png" />
+<div class="section" id="user-fpga-data-access">
+<h3>User FPGA Data Access<a class="headerlink" href="#user-fpga-data-access" title="永久链接至标题">¶</a></h3>
+<p>The UFPGA data access space is allocated specifically for the readout of data produced in the UFPGA logic which need to exploit the maximum readout throughput available. This space can be accessed by using the available block transfer mechanism over the Ethernet or USB communication interfaces.</p>
+<p>Block data transfer allows to implement a faster readout. Block transfers requests over Ethernet or USB do not trigger any transfer over the internal local bus between the MFPGA and UFPGA: a data prefetch mechanism, implemented in the MFPGA, stores User data into a local data queue (prefetch data queue). Consequently, data from the UFPGA data access space are read from the prefetch data queue in the MFPGA.</p>
+</div>
+<div class="section" id="user-fpga-register-access">
+<h3>User FPGA Register Access<a class="headerlink" href="#user-fpga-register-access" title="永久链接至标题">¶</a></h3>
+<p>UFPGA register address range is allocated for User register read/write.</p>
+<p>A read or write transfer (single cycle) can be triggered on the local bus by performing a corresponding read transfer in the 0x1000-0x7FFF address interval.</p>
+<p>The local bus master in the MFPGA acts as a transparent bridge between the communication interface (ETH/USB) and the local bus in this interval. A couple of examples are given to illustrate the transparent bridge behaviour.</p>
+</div>
+<div class="section" id="configuration-rom">
+<h3>Configuration ROM<a class="headerlink" href="#configuration-rom" title="永久链接至标题">¶</a></h3>
+<p>Only the 8 LSBs of each location of the Configuration ROM are significant.</p>
+<img alt="_images/ROMAddressMapOfTheDT5495.png" src="_images/ROMAddressMapOfTheDT5495.png" />
+<p><strong>Note: The oui0/1 fields represent CAEN Manufacturer identifier (IEEE OUI), which is equal to 0x40E6.</strong></p>
+<p><strong>Note: The board serial number can be read with two accesses: if the serial number on the module front panel is 1245(hex 0x4DD), for instance, the Serial Number’s MSB (0x8180) will be 0x04, while the Serial Number’s LSB (0x8184) will be 0xDD.</strong></p>
+</div>
+<div class="section" id="configuration-and-status-registers">
+<h3>Configuration and Status Registers<a class="headerlink" href="#configuration-and-status-registers" title="永久链接至标题">¶</a></h3>
+<img alt="_images/CSRRegisters.png" src="_images/CSRRegisters.png" />
+<img alt="_images/RevisionResetScratchRegister.png" src="_images/RevisionResetScratchRegister.png" />
+</div>
+<div class="section" id="flash-configuration">
+<h3>Flash Configuration<a class="headerlink" href="#flash-configuration" title="永久链接至标题">¶</a></h3>
+<p>This address range is reserved to flash remote programming.</p>
+<p><strong>Note: access to the FLASH is through the provided functions of the PLULib library.</strong></p>
+</div>
+<div class="section" id="internal-scratch-sram">
+<h3>Internal Scratch SRAM<a class="headerlink" href="#internal-scratch-sram" title="永久链接至标题">¶</a></h3>
+<p>This area is available either for test access or for volatile data storage. Any address in this interval is implemented by an internal RAM location.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PLULib.html" class="btn btn-neutral float-right" title="PLULib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MezzanineCards.html" class="btn btn-neutral float-left" title="扩展子板" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

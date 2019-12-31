@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Template'
+project = 'CAEN 可编程逻辑模块'
 copyright = '2019, Hongyi Wu(吴鸿毅)'
 author = 'Hongyi Wu(吴鸿毅)'
 
 # The full version, including alpha/beta/rc tags
-release = '1'
+release = 'V1.0'
 
 
 # -- General configuration ---------------------------------------------------
